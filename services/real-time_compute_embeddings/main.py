@@ -13,11 +13,11 @@ class EmbeddingResponse(BaseModel):
     Pydantic model for the embedding response.
 
     Attributes:
-        embedding (list[list[float]]): A list of lists representing
+        embedding (List[List[float]]): A list of lists representing
                                        the image embeddings.
     """
 
-    embedding: list[list[float]]
+    embedding: List[List[float]]
 
 
 device = "cuda" if torch.cuda.is_available() else "cpu"

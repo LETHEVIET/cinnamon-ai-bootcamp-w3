@@ -1,4 +1,4 @@
-# Develop & Deploy an Image-to-Image search service
+# Develop & Deploy an Image-to-Image search service homework
 
 This is a repository for the Week 3 - homework of Cinnamon AI Bootcamp 2024
 
@@ -17,6 +17,16 @@ Overview system design
 ![](./overview_system_design.png)
 
 ## Repository structure
+
+```
+├── common
+│   └── data
+│       └── images                    // dataset directory
+└── services                          // services source code
+    ├── image_search
+    ├── pre-compute_embeddings
+    └── real-time_compute_embeddings
+```
 
 ## Image Search embedding service
 
