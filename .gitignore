@@ -140,3 +140,4 @@ cython_debug/
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Python
 
 model
+common/data/images
