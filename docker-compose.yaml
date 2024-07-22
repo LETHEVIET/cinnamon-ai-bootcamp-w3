@@ -1,0 +1,23 @@
+
+services:
+  image-search:
+    container_name: image-search
+    image: "${DOCKER_REGISTRY}/image-search:0.0.1"
+    build:
+      context: .
+      dockerfile: services/image_search/Dockerfile
+    restart: always
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+
+  embedding:
+    container_name: embedding
+    image: "${DOCKER_REGISTRY}/embedding:0.0.1"
+    build:
+      context: .
+      dockerfile: services/real-time_compute_embeddings/Dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
