@@ -28,6 +28,9 @@ Overview system design
     └── real-time_compute_embeddings
 ```
 
+## Dataset
+Download the dataset at this [link](https://universe.roboflow.com/team-roboflow/coco-128/dataset/2), with **OpenAI CLIP Classification** format
+
 ## Image Search embedding service
 
 ## Pre-compute embedding service
