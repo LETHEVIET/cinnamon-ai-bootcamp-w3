@@ -27,10 +27,22 @@ Overview system design
     ├── pre-compute_embeddings
     └── real-time_compute_embeddings
 ```
+## Summary
+
+For usage:
+```shell
+docker compose up -d
+```
 
 ## Image Search embedding service
 
+This service hosts an Image Search API using embedding of `real-time-compute embedding service`.
+
+This is the [endpoint](http://34.209.51.63:8000/docs#/default/search_similar_images_search_similar_images__post)
+
 ## Pre-compute embedding service
+
+This service is used for pre-computing the embedding of a list of images.
 
 ## Real-time-compute embedding service
 
@@ -55,11 +67,14 @@ Running Docker image
 - with CPU
 
 ```shell
-docker run -p 8000:8000 -d real-time_compute_embeddings
+docker run -p 8080:8080 -d real-time_compute_embeddings
 ```
 
 - with GPU (you need to install [nvidia-container-toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for using docker with GPU)
 
 ```shell
-docker run -p 8000:8000 --gpus all -d real-time_compute_embeddings
+docker run -p 8080:8080 --gpus all -d real-time_compute_embeddings
 ```
+
+## Output
+The system will return top k of the most similar images in format base64 url.
