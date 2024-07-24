@@ -1,5 +1,7 @@
 FROM nvidia/cuda:11.0.3-devel-ubuntu20.04
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
@@ -8,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-COPY services/real-time_compute_embeddings/* .
+COPY . .
 
 RUN bash -c "source ./download_model.sh"
 

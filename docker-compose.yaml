@@ -1,0 +1,23 @@
+services:
+  image-search:
+    container_name: image-search
+    image: "image-search:0.0.1"
+    build:
+      context: services/image_search/
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - './common:/app/common'
+
+  embedding:
+    container_name: embedding
+    image: "embedding:0.0.1"
+    build:
+      context: services/real-time_compute_embeddings/
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
+

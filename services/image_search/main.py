@@ -23,9 +23,10 @@ async def search_similar_images(file: UploadFile = File(...), num_results: int =
         
         # Get the image embedding
         # embedding = await get_image_embedding(image_data)
-        url = "http://localhost:8000/compute_embedding/"
-        embedding = re.post(url, files=file)
-
+        url = "http://34.209.51.63:8080/compute_embedding/"
+        files = {"file": (file.filename, image_data, file.content_type)}
+        embedding = re.post(url, files=files).json()
+        embedding = np.array(embedding["embedding"])
         
         # Reshape the embedding to match FAISS input requirements
         embedding = embedding.reshape(1, -1)
