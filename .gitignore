@@ -141,3 +141,4 @@ cython_debug/
 
 model
 common/data/images
+mount.sh
