@@ -6,8 +6,7 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     git \
-    wget \
-    s3fs
+    wget
 
 WORKDIR /app
 
