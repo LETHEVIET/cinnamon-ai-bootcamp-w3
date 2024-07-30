@@ -24,7 +24,6 @@ async def search_similar_images(file: UploadFile = File(...), num_results: int =
         files = {"file": (file.filename, image_data, file.content_type)}
         embedding = re.post(url, files=files).json()
         embedding = np.array(embedding["embedding"])
-
         # Reshape the embedding to match FAISS input requirements
         embedding = embedding.reshape(1, -1)
 
