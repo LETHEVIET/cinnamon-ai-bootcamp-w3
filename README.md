@@ -37,6 +37,14 @@ docker compose up -d
 ## Dataset
 Download the dataset at this [link](https://universe.roboflow.com/team-roboflow/coco-128/dataset/2), with **OpenAI CLIP Classification** format
 
+## Summary
+
+For usage:
+
+```shell
+docker compose up -d
+```
+
 ## Image Search embedding service
 
 This service hosts an Image Search API using embedding of `real-time-compute embedding service`.

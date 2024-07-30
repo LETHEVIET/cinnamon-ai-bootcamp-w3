@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - './common:/app/common'
+      - "./common:/app/common"
 
   embedding:
     container_name: embedding
@@ -20,4 +20,3 @@ services:
     restart: always
     ports:
       - "8080:8080"
-
