@@ -27,9 +27,11 @@ Overview system design
     ├── pre-compute_embeddings
     └── real-time_compute_embeddings
 ```
+
 ## Summary
 
 For usage:
+
 ```shell
 docker compose up -d
 ```
@@ -77,4 +79,5 @@ docker run -p 8080:8080 --gpus all -d real-time_compute_embeddings
 ```
 
 ## Output
+
 The system will return top k of the most similar images in format base64 url.
