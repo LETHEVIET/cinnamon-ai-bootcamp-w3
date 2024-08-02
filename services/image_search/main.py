@@ -8,8 +8,17 @@ import json
 import requests as re
 import base64
 from io import BytesIO
+from confluent_kafka import Producer, Consumer, KafkaError
 
 app = FastAPI()
+
+# Kafka configuration
+KAFKA_BROKER = 'localhost:9092'  # Replace with your Kafka broker address
+KAFKA_TOPIC = 'image-uploads'
+KAFKA_GROUP = 'image-search-group'
+
+# Initialize Kafka producer
+producer = Producer({'bootstrap.servers': KAFKA_BROKER})
 
 # Assuming the embedding dimension is 512, adjust if different
 index = faiss.read_index("../../common/data/index.faiss")
@@ -33,14 +42,30 @@ def pil_image_to_base64(image) -> str:
     return img_base64
 
 
+def deliver_message(topic, message):
+    """Helper function to deliver messages to Kafka."""
+    producer.produce(topic, message)
+    producer.flush()
+
+
 @app.post("/search-similar-images/")
 async def search_similar_images(file: UploadFile = File(...), num_results: int = 5):
     try:
-        # # Read the uploaded image file
+        # Read the uploaded image file
         image_data = await file.read()
         
-        # Get the image embedding
-        # embedding = await get_image_embedding(image_data)
+        # Produce a message to Kafka
+        message = {
+            'file_name': file.filename,
+            'file_content': base64.b64encode(image_data).decode('utf-8'),
+        }
+        deliver_message(KAFKA_TOPIC, json.dumps(message))
+        
+        # Now we assume another service is handling the Kafka messages and computing embeddings
+        # We need to fetch results from another service or storage
+        # For simplicity, we'll simulate a response from a processed Kafka message
+
+        # Simulate fetching results (replace with actual retrieval logic)
         url = "http://localhost:8080/compute_embedding/"
         files = {"file": (file.filename, image_data, file.content_type)}
         embedding = re.post(url, files=files).json()
@@ -65,3 +90,4 @@ async def search_similar_images(file: UploadFile = File(...), num_results: int =
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
