@@ -88,4 +88,5 @@ venv/
 # VS Code
 .vscode/
 
-model
+mount.sh
+
