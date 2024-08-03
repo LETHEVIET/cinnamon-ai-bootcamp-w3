@@ -76,7 +76,6 @@ async def search_similar_images(file: UploadFile = File(...), num_results: int =
         
         # Search for similar images using FAISS
         distances, indices = index.search(embedding, num_results)
-        
         # Get the URLs of similar images
         with open("../../common/data/image_paths.json") as f:
             image_urls = json.load(f)
@@ -90,4 +89,3 @@ async def search_similar_images(file: UploadFile = File(...), num_results: int =
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-

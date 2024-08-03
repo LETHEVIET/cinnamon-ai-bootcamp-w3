@@ -1,4 +1,3 @@
-
 services:
   image-search:
     container_name: image-search
