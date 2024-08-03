@@ -1,4 +1,5 @@
 fastapi
+uvicorn
 ftfy
 regex
 tqdm
