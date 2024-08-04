@@ -3,7 +3,7 @@ from typing import List
 
 import clip
 import torch
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, File, UploadFile
 from PIL import Image
 from pydantic import BaseModel
 
