@@ -6,7 +6,10 @@ RUN apt-get update && apt-get install -y \
     git \
     wget \
     vim \
-    telnet
+    telnet \
+    s3fs \
+    fuse \
+    awscli
 
 WORKDIR /app
 
