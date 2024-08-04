@@ -45,6 +45,14 @@ For usage:
 docker compose up -d
 ```
 
+## Summary
+
+For usage:
+
+```shell
+docker compose up -d
+```
+
 ## Image Search embedding service
 
 This service hosts an Image Search API using embedding of `real-time-compute embedding service`.
